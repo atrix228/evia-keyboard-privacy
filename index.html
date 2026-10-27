@@ -75,10 +75,10 @@
             text-align: center;
         }
         code {
+            font-size: 0.85rem;
             background: #edf2f7;
             padding: 2px 6px;
             border-radius: 4px;
-            font-size: 0.875em;
         }
     </style>
 </head>
@@ -90,85 +90,89 @@
 
         <h2>About the App</h2>
         <p>
-            <strong>Evia AI Keyboard</strong> is an AI-powered Android keyboard that provides features including AI chat, auto-translation across 34 languages, Chinese handwriting recognition, voice transcription, smart autocorrect, Telegram agent integration, a clipboard library, a built-in notepad, and customizable RGB themes. All AI features use API connections to either the Evia API or your own OpenAI-compatible API endpoint configured by you.
+            <strong>Evia AI Keyboard</strong> is an AI-powered custom keyboard for Android featuring AI chat, auto-translation across 34 languages, Chinese handwriting recognition, voice transcription, Telegram agent integration, RGB effects, smart autocorrect, and n-gram next-word prediction.
+        </p>
+        <p>
+            When you use AI features (chat, translation, voice transcription, autocorrect), text is sent to the AI provider whose API key you configure. Your API key and all settings are stored locally on your device only.
         </p>
 
-        <h2>Information We Do Not Collect</h2>
+        <h2>Information We Collect</h2>
         <div class="highlight">
-            <p>Evia AI Keyboard does <strong>not</strong> collect, store, or transmit any personal data to us. No analytics, no tracking, no ads.</p>
+            <p>Evia AI Keyboard does <strong>not</strong> collect, store, or transmit any personal data to us. The app has no backend server of its own.</p>
         </div>
         <p>Specifically, the app:</p>
         <ul>
-            <li>Does <strong>not</strong> log or transmit your keystrokes or the text you type.</li>
-            <li>Does <strong>not</strong> collect personal information (name, email, phone number, device identifiers).</li>
-            <li>Does <strong>not</strong> use advertising SDKs, analytics platforms, or crash-reporting services.</li>
-            <li>Does <strong>not</strong> access your contacts, location, camera, or files unless explicitly granted by you for a specific feature.</li>
-            <li>Does <strong>not</strong> require any account or sign-up.</li>
+            <li>Does <strong>not</strong> log, record, or upload your keystrokes or typed text.</li>
+            <li>Does <strong>not</strong> collect analytics, crash reports, or usage statistics.</li>
+            <li>Does <strong>not</strong> use advertising identifiers, tracking pixels, or cookies.</li>
+            <li>Does <strong>not</strong> access your contacts, location, camera, or files beyond what is required for the keyboard to function.</li>
+            <li>Does <strong>not</strong> require account registration.</li>
         </ul>
 
-        <h2>Keyboard Permissions Disclosure</h2>
+        <h2>AI Feature Data</h2>
         <p>
-            Android displays a standard warning when you enable any third-party keyboard stating it <em>"may be able to collect all the text you type."</em> This is a standard system notice for all IME apps.
-        </p>
-        <div class="highlight">
-            <p>Evia AI Keyboard does <strong>NOT</strong> collect or transmit your keystrokes. All text processing happens locally on your device except when you explicitly invoke an AI feature (chat, translate, autocorrect, voice).</p>
-        </div>
-
-        <h2>AI Features and Network Access</h2>
-        <p>
-            Certain AI features require network access to function. When you actively use these features, the text you submit is sent to the AI service you have configured:
+            Evia AI Keyboard optionally connects to third-party AI providers (e.g. Evia API, OpenAI-compatible endpoints) using an API key you supply. When you use AI chat, translation, voice transcription, or autocorrect:
         </p>
         <ul>
-            <li><strong>AI Chat (✨):</strong> Your messages are sent to the Evia API (<code>apirouter.myevia.io</code>) or your own custom API endpoint.</li>
-            <li><strong>Auto-Translate (譯):</strong> The sentence being translated is sent to the configured AI model endpoint.</li>
-            <li><strong>AI Autocorrect:</strong> Text is sent to the configured AI endpoint for correction. This feature is off by default.</li>
-            <li><strong>Voice Transcription (🎤):</strong> Audio is sent to the configured transcription service.</li>
-            <li><strong>Telegram Agents:</strong> Your messages are sent to the Telegram bot you configure — subject to that bot's privacy policy.</li>
+            <li>The text you submit is sent directly from your device to the AI provider's servers over HTTPS.</li>
+            <li>Your API key is stored locally on your device and never sent to us.</li>
+            <li>The AI provider's own privacy policy governs how they handle your data. We recommend reviewing the privacy policy of the provider whose key you use.</li>
         </ul>
         <p>
-            Your <strong>API key is stored locally on your device</strong> using Android's SharedPreferences and is never transmitted to us. It is sent only to the API endpoint you configure, as part of standard API authentication headers.
+            You can use the keyboard in offline mode (basic typing, autocorrect, handwriting recognition after initial model download) without enabling any AI features.
         </p>
+
+        <h2>Keyboard Permission Warning</h2>
         <p>
-            Please review the privacy policy of your chosen AI provider (e.g., Evia Lab, OpenAI, Anthropic, or others) to understand how they handle data you send to their APIs.
+            Android displays a standard system warning when you enable any third-party keyboard stating it <em>"may be able to collect all the text you type."</em>
+        </p>
+        <div class="highlight">
+            <p>This is a standard Android warning shown for ALL third-party keyboards. Evia AI Keyboard does NOT collect or transmit your keystrokes. All text processing happens locally on your device unless you explicitly invoke an AI feature.</p>
+        </div>
+
+        <h2>Local Data Storage</h2>
+        <p>
+            The app stores the following data locally on your device using Android SharedPreferences and local files:
+        </p>
+        <ul>
+            <li>Keyboard settings (size, theme, RGB settings, language preferences)</li>
+            <li>Your AI provider API key(s)</li>
+            <li>Clipboard library contents</li>
+            <li>Notepad contents</li>
+            <li>User dictionary words you add</li>
+            <li>Telegram agent configurations</li>
+        </ul>
+        <p>
+            All of this data stays on your device and is deleted when you uninstall the app. You can export and import your settings as JSON from within the app.
         </p>
 
         <h2>Handwriting Recognition</h2>
         <p>
-            Chinese handwriting recognition uses <strong>Google ML Kit Digital Ink Recognition</strong>, which runs entirely <strong>on-device</strong> after the initial model download. No handwriting data is sent to external servers during recognition.
+            Chinese handwriting recognition uses Google ML Kit Digital Ink Recognition, which runs entirely <strong>on-device</strong> after the language model is downloaded. Handwritten characters are never sent to external servers.
         </p>
 
-        <h2>Local Data Storage</h2>
+        <h2>Voice Transcription</h2>
         <p>
-            The app stores the following data <strong>only on your device</strong>:
+            When you use voice input, the audio is sent to the AI provider you have configured (using your API key) for transcription. The audio is not stored on our servers. Refer to your AI provider's privacy policy for how they handle audio data.
         </p>
-        <ul>
-            <li>Your settings and preferences (keyboard size, theme, language, etc.)</li>
-            <li>Your API key(s) for AI services</li>
-            <li>Clipboard history (if you use the clipboard library feature)</li>
-            <li>Notepad content</li>
-            <li>Custom words added to your user dictionary</li>
-        </ul>
-        <p>All of this data is deleted when you uninstall the app. You can export and import your settings as a JSON file from within the app.</p>
 
         <h2>Third-Party Services</h2>
-        <ul>
-            <li><strong>Google ML Kit</strong> — for on-device Chinese handwriting recognition. Subject to <a href="https://developers.google.com/ml-kit/terms" target="_blank">Google ML Kit Terms of Service</a>.</li>
-            <li><strong>Your chosen AI API provider</strong> — text sent only when you explicitly trigger an AI feature.</li>
-            <li><strong>Telegram</strong> — only if you configure and use the Telegram Agents feature.</li>
-        </ul>
+        <p>
+            The app does not integrate advertising networks, analytics SDKs, or crash-reporting services. The only third-party network requests are the AI API calls you explicitly initiate, sent directly to the provider you configure.
+        </p>
 
         <h2>Children's Privacy</h2>
         <p>
-            We do not knowingly collect any personal data from children under the age of 13. The app does not collect data from any user, regardless of age.
+            The app does not knowingly collect personal data from anyone, including children under the age of 13. No user registration is required to use the app.
         </p>
 
         <h2>Changes to This Policy</h2>
         <p>
-            This privacy policy may be updated from time to time. Any changes will be reflected on this page with an updated effective date. Continued use of the app after changes constitutes acceptance of the revised policy.
+            This privacy policy may be updated from time to time. Any changes will be reflected on this page with an updated effective date. We encourage you to review this policy periodically.
         </p>
 
         <h2>Contact</h2>
-        <p>If you have any questions or concerns about this privacy policy, please contact us:</p>
+        <p>If you have questions or concerns about this privacy policy, please contact us at:</p>
         <p><strong>Email:</strong> <a href="mailto:htc228@gmail.com">htc228@gmail.com</a></p>
 
         <div class="footer">
